@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    container_name: artgallery-app
+    ports:
+      - "4000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - PORT=3000
+      - MONGODB_AUTH_URI=mongodb://artgallery-mongo:27017/artgallery
+
+  mongo:
+    image: mongo:6
+    container_name: artgallery-mongo
