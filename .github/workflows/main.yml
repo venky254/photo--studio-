@@ -37,3 +37,18 @@ jobs:
       run: |
         docker tag photostudio-app ${{ secrets.DOCKERHUB_USERNAME }}/photostudio-app:latest
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/photostudio-app:latest
+
+    - name:  Install kubectl
+      run: |
+       curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.31.0/bin/linux/amd64/kubectl  
+       chmod +x kubectl
+       sudo  mv kubectl /usr/local/bin/
+
+    - name: update kube config
+      run: aws eks update-kubeconfig --name venkey-cluster --region ap-south-1
+      
+    - name: Deploy to EKS
+      run: |
+        kubectl apply -f k8s/app-deployment.yaml
+        kubectl apply -f k8s/mongodb-deployment.yaml
+        kubectl apply -f k8s/sonar-deployment.yaml     
