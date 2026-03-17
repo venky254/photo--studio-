@@ -70,7 +70,7 @@ docker-compose up -d
 ## ▶️ How to Run Locally
 
 ```bash
-git clone https://github.com/your-username/photo-studio.git
+git clone https://github.com/venky254/photo--studio-.git
 cd photo-studio
 npm install
 npm start
