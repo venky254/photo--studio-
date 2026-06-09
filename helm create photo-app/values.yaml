@@ -1,0 +1,10 @@
+replicaCount: 2
+
+appName: photostudio
+
+image:
+  repository: venkataramana773/photostudio-app
+  tag: latest
+
+service:
+  port: 3000
